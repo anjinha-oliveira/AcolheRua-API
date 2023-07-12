@@ -1,9 +1,14 @@
 const express = require('express')
+const routesTest = require('./routes/test')
+const cors = require("cors")
+const mongoose = require('./database/db')
 
 const app = express()
-app.use(express.json())
 
-const rotaTest = require('./routes/test') //importa rotas de song
-app.use('/', rotaTest) //definindo rota padrão para songs
+app.use(express.json())
+app.use(cors());
+mongoose()
+
+app.use('/', routesTest)
 
 module.exports = app
