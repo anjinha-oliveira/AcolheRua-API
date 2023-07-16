@@ -1,5 +1,7 @@
+require('dotenv').config()
+
 const express = require('express')
-const routesTest = require('./routes/test')
+const routesTest = require('./routes/institution-routes')
 const cors = require("cors")
 const mongoose = require('./database/db')
 

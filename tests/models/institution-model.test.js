@@ -1,6 +1,7 @@
-const InstitutionModel = require('../src/models/institution-model')
 
 describe('GET model test', () => {
+  const InstitutionModel = require('../../src/models/institution-model')
+
   const institution = new InstitutionModel({
     'name': 'Instituição de caridade',
     'address': 'Boa vista, 333-Recife',
