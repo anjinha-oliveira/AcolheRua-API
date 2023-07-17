@@ -1,4 +1,4 @@
-const { response } = require('express')
+const { response, request } = require('express')
 const institutionsModel = require('../models/institution-model')
 
 const routerTest = (request, response) => {
@@ -54,9 +54,34 @@ const createInstitutions = async (request, response) => {
   }
 }
 
+const updateInstitution = async (request, response) => {
+  try {
+    const {
+      name,
+      address,
+      phone,
+      description
+    } = request.body
+
+    const updateInstitution = await institutionsModel.findByIdAndUpdate(
+      request.params.id, {
+      name,
+      address,
+      phone,
+      description
+      })
+    response.status(200).send(
+      updateInstitution
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   routerTest,
   institutions, 
   getInstitutionByID,
-  createInstitutions
+  createInstitutions,
+  updateInstitution
 }
