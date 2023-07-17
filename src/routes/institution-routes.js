@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.get('/', controllers.routerTest)
 router.get('/institutions', controllers.institutions)
+router.get('/institutions/:id/', controllers.getInstitutionByID)
 
 module.exports = router

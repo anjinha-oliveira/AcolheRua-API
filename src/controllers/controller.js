@@ -18,7 +18,19 @@ const institutions = async (request, response) => {
   } 
 }
 
+const getInstitutionByID = async (request, response) => {
+  try {
+    const institution = await institutionsModel.findById(request.params.id, {__v: 0})
+    response.status(200).send(institution)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
 module.exports = {
   routerTest,
-  institutions
+  institutions, 
+  getInstitutionByID
 }
