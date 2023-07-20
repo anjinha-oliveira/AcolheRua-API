@@ -13,7 +13,6 @@ const institutions = async (request, response) => {
   response.status(200).send({
     result: listInstitutions
   })
-    console.log(listInstitutions)
   } catch (error) {
     response.status(500).send(error)
   } 
@@ -22,7 +21,11 @@ const institutions = async (request, response) => {
 const getInstitutionByID = async (request, response) => {
   try {
     const institution = await institutionsModel.findById(request.params.id)
-    response.status(200).send(institution)
+    if (institution != null) {
+      response.status(200).send(institution)
+    } else {
+      response.status(404).send()
+    }
   } catch (error) {
     response.status(500).send(error)
   }
@@ -37,20 +40,19 @@ const createInstitutions = async (request, response) => {
       description
     } = request.body
 
-    const newInstititon = new institutionsModel 
-    ({
+    const newInstititon = new institutionsModel({
       name,
       address,
       phone,
       description
     })
-
+ 
     const savedNewInstitution = await newInstititon.save()
-      response.status(201).send(
-        savedNewInstitution
-      )   
+    response.status(201).send(
+      savedNewInstitution
+    )   
   } catch (error) {
-    response.status(500).send(error)
+    response.status(400).send(error)
   }
 }
 
