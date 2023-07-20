@@ -78,10 +78,22 @@ const updateInstitution = async (request, response) => {
   }
 }
 
+const deleteInstitution = async (request, response) => {
+  try {
+    const {id} = request.params
+    const deleted = await institutionsModel.findByIdAndDelete(id)
+    const message = `Institution ${deleted.name} deleted`
+    response.status(200).send({message})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   routerTest,
   institutions, 
   getInstitutionByID,
   createInstitutions,
-  updateInstitution
+  updateInstitution,
+  deleteInstitution
 }
