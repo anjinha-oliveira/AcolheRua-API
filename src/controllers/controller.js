@@ -15,7 +15,7 @@ const institutions = async (request, response) => {
   })
     console.log(listInstitutions)
   } catch (error) {
-    response.status(400).send(error)
+    response.status(500).send(error)
   } 
 }
 
@@ -24,7 +24,7 @@ const getInstitutionByID = async (request, response) => {
     const institution = await institutionsModel.findById(request.params.id)
     response.status(200).send(institution)
   } catch (error) {
-    console.log(error)
+    response.status(500).send(error)
   }
 }
 
@@ -50,7 +50,7 @@ const createInstitutions = async (request, response) => {
         savedNewInstitution
       )   
   } catch (error) {
-    console.log(error)
+    response.status(500).send(error)
   }
 }
 
@@ -74,7 +74,7 @@ const updateInstitution = async (request, response) => {
       updateInstitution
     )
   } catch (error) {
-    console.log(error)
+    response.status(500).send(error)
   }
 }
 
@@ -85,7 +85,9 @@ const deleteInstitution = async (request, response) => {
     const message = `Institution ${deleted.name} deleted`
     response.status(200).send({message})
   } catch (error) {
-    console.log(error)
+    response.status(500).send({
+      message: 'institution was not reported'
+    })
   }
 }
 
