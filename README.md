@@ -11,14 +11,14 @@ Por esse motivo eu pensei em criar uma aplicação junto a uma página web para 
 $ npm i
 ```
 
-Para copiar as variáveis das credênciais do **.env.example** para o **.env**:
+Para copiar as variáveis das credenciais do `.env.example` para o `.env`:
 
 ```
 $ cp .env.example .env
 ```
 
-Para adicionar a credêncial do banco de dados no .env, você precisa logar no 
-**MongoAtlas**, cria seu banco de dados, pegar a URI do seu projeto e adicionar á variável
+Para adicionar a credencial do banco de dados no `.env`, você precisa logar no 
+**MongoAtlas**, cria seu banco de dados, pegar a URI do seu projeto e adicionar à variável:
 ```
 DB_MONGO=""
 ```
