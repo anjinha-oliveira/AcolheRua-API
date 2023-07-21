@@ -1,5 +1,5 @@
 
-describe('GET model test', () => {
+describe('GET model institutions', () => {
   const InstitutionModel = require('../../src/models/institution-model')
 
   const institution = new InstitutionModel({
