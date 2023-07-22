@@ -1,12 +1,6 @@
 const { response, request } = require('express')
 const institutionsModel = require('../models/institution-model')
 
-const routerTest = (request, response) => {
-  response.status(200).json({
-    'name': 'Não sei',
-  })
-}
-
 const institutions = async (request, response) => {
   try {
   const listInstitutions = await institutionsModel.find({}, null)
@@ -94,7 +88,6 @@ const deleteInstitution = async (request, response) => {
 }
 
 module.exports = {
-  routerTest,
   institutions, 
   getInstitutionByID,
   createInstitutions,
