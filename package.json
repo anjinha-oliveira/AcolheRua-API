@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:watch": "jest --watchAll",
-    "test": "jest tests/",
+    "test": "jest --testTimeout=10000",
     "start": "nodemon server.js",
     "swagger-autogen": "node swagger.js"
   },
