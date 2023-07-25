@@ -28,3 +28,9 @@ DB_MONGO=""
 ```
 $ npm start
 ```
+
+## Para inicializar teste de recebimento de dados no **MongoDB Atlas**
+
+```
+$ npm run test
+```
