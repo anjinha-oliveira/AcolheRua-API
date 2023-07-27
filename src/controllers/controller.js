@@ -13,12 +13,26 @@ const institutions = async (request, response) => {
 }
 
 const getInstitutionByID = async (request, response) => {
+  console.log('getInstitutionByID: ' + request.params.id)
   try {
     const institution = await institutionsModel.findById(request.params.id)
     if (institution != null) {
       response.status(200).send(institution)
     } else {
       response.status(404).send()
+    }
+  } catch (error) {
+    response.status(500).send(error)
+  }
+}
+
+const getInstitutionsByName = async (request, response) => {
+  try {
+    const institutions = await institutionsModel.find({name: request.query.name})
+    if (institutions != null) {
+      response.status(200).send(institutions)
+    } else {
+      response.status(500).send()
     }
   } catch (error) {
     response.status(500).send(error)
@@ -90,6 +104,7 @@ const deleteInstitution = async (request, response) => {
 module.exports = {
   institutions, 
   getInstitutionByID,
+  getInstitutionsByName,
   createInstitutions,
   updateInstitution,
   deleteInstitution
