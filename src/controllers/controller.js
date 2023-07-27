@@ -13,7 +13,6 @@ const institutions = async (request, response) => {
 }
 
 const getInstitutionByID = async (request, response) => {
-  console.log('getInstitutionByID: ' + request.params.id)
   try {
     const institution = await institutionsModel.findById(request.params.id)
     if (institution != null) {
